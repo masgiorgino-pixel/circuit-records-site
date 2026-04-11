@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout — Circuit Records</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <img class="bg-logo" src="images/grammofono-bg.png" alt="" />
+  <header class="header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">Circuit Records</a>
+      <nav class="nav">
+        <a data-nav="home" href="index.html">Home</a>
+        <a data-nav="releases" href="releases.html">Releases</a>
+        <a data-nav="artists" href="artists.html">Artists</a>
+        <a data-nav="shop" href="shop.html">Shop</a>
+        <a data-nav="links" href="links.html">Links</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <h1 class="page-title" style="font-size:clamp(44px,7vw,76px);">Checkout</h1>
+    <section class="checkout-layout">
+      <article class="card">
+        <p class="smallcaps">Customer details</p>
+        <form class="form-grid" style="margin-top:18px;">
+          <label>Full name<input type="text" placeholder="Name / Surname" /></label>
+          <label>Email<input type="email" placeholder="mail@example.com" /></label>
+          <label>Address<input type="text" placeholder="Street / Number" /></label>
+          <label>City<input type="text" placeholder="City" /></label>
+          <label>Postal code<input type="text" placeholder="ZIP" /></label>
+          <label>Country<select><option>Italy</option><option>France</option><option>Germany</option><option>Spain</option><option>Other</option></select></label>
+          <label>Notes<textarea placeholder="Shipping note / special request"></textarea></label>
+        </form>
+      </article>
+      <aside class="card">
+        <p class="smallcaps">Payment</p>
+        <p class="notice" style="margin-top:18px;">
+          This is a visual checkout page. To accept real payments you will need to connect Stripe, PayPal or another checkout provider.
+        </p>
+        <div id="checkout-summary" style="margin-top:24px;"></div>
+        <button class="btn btn-primary" style="margin-top:28px;width:100%;">Payment setup needed</button>
+      </aside>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
