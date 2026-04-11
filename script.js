@@ -33,7 +33,7 @@
 
   function addToCart(product) {
     const cart = readCart();
-    const existing = cart.find(item => item.id === product.id);
+    const existing = cart.find(item => item.id === product.id && item.size === product.size);
     if (existing) existing.qty += 1;
     else cart.push({ ...product, qty: 1 });
     saveCart(cart);
@@ -42,11 +42,20 @@
 
   document.querySelectorAll('[data-add]').forEach(btn => {
     btn.addEventListener('click', () => {
+      const requiresSize = btn.dataset.requiresSize === 'true';
+      const sizeSelect = document.querySelector(`[data-size-for="${btn.dataset.id}"]`);
+      const size = sizeSelect ? sizeSelect.value : '';
+      if (requiresSize && !size) {
+        alert('Select a size first: M, L, XL or XXL.');
+        if (sizeSelect) sizeSelect.focus();
+        return;
+      }
       addToCart({
         id: btn.dataset.id,
         name: btn.dataset.name,
         price: Number(btn.dataset.price),
-        image: btn.dataset.image
+        image: btn.dataset.image,
+        size: size || null
       });
     });
   });
@@ -81,31 +90,32 @@
         <div>
           <h2 style="margin:0;font-size:18px;text-transform:uppercase;">${item.name}</h2>
           <p class="meta" style="margin-top:8px;">${euro.format(item.price)}</p>
+          ${item.size ? `<p class="cart-size">Size / ${item.size}</p>` : ''}
           <div class="qty-controls">
-            <button data-minus="${item.id}" type="button">−</button>
+            <button data-minus="${item.id}" data-size="${item.size || ''}" type="button">−</button>
             <span>${item.qty}</span>
-            <button data-plus="${item.id}" type="button">+</button>
+            <button data-plus="${item.id}" data-size="${item.size || ''}" type="button">+</button>
           </div>
         </div>
         <div style="text-align:right;">
           <p style="margin:0 0 12px;font-size:18px;">${euro.format(item.price * item.qty)}</p>
-          <button class="buy-btn" data-remove="${item.id}" type="button">Remove</button>
+          <button class="buy-btn" data-remove="${item.id}" data-size="${item.size || ''}" type="button">Remove</button>
         </div>
       </article>
     `).join('');
 
     itemsWrap.querySelectorAll('[data-minus]').forEach(btn => btn.addEventListener('click', () => {
-      const cart = readCart().map(item => item.id === btn.dataset.minus ? { ...item, qty: item.qty - 1 } : item).filter(item => item.qty > 0);
+      const cart = readCart().map(item => (item.id === btn.dataset.minus && String(item.size || '') === String(btn.dataset.size || '')) ? { ...item, qty: item.qty - 1 } : item).filter(item => item.qty > 0);
       saveCart(cart); renderCartPage();
     }));
 
     itemsWrap.querySelectorAll('[data-plus]').forEach(btn => btn.addEventListener('click', () => {
-      const cart = readCart().map(item => item.id === btn.dataset.plus ? { ...item, qty: item.qty + 1 } : item);
+      const cart = readCart().map(item => (item.id === btn.dataset.plus && String(item.size || '') === String(btn.dataset.size || '')) ? { ...item, qty: item.qty + 1 } : item);
       saveCart(cart); renderCartPage();
     }));
 
     itemsWrap.querySelectorAll('[data-remove]').forEach(btn => btn.addEventListener('click', () => {
-      const cart = readCart().filter(item => item.id !== btn.dataset.remove);
+      const cart = readCart().filter(item => !(item.id === btn.dataset.remove && String(item.size || '') === String(btn.dataset.size || '')));
       saveCart(cart); renderCartPage();
     }));
 

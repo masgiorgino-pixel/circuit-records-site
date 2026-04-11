@@ -278,3 +278,9 @@ body::after {
   .cart-item { grid-template-columns: 80px 1fr; }
   .cart-item > div:last-child { grid-column: 1 / -1; }
 }
+
+
+.size-field{display:block;margin-top:18px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.size-select{width:100%;margin-top:10px;background:rgba(255,255,255,.04);color:#fff;border:1px solid rgba(255,255,255,.12);padding:14px 16px;font-family:inherit;text-transform:uppercase;letter-spacing:.14em;outline:none}
+.size-select option{color:#000}
+.cart-size{margin-top:8px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55)}
