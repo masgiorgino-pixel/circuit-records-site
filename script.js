@@ -132,9 +132,13 @@
       if (sizeEl) size = sizeEl.value;
       if (!size) {
         alert('Select a size first: M, L, XL or XXL.');
-        if (sizeEl) sizeEl.focus();
+        if (sizeEl) {
+          markSizeField(sizeEl, true);
+          sizeEl.focus();
+        }
         return;
       }
+      if (sizeEl) markSizeField(sizeEl, false);
     }
 
     if (qtyId) {
@@ -151,9 +155,10 @@ Size: ${size || 'N/A'}
 Quantity: ${quantity}
 
 Full name:
-Shipping country:
+Shipping address:
 City:
 Postal code:
+Country:
 
 Notes:
 
