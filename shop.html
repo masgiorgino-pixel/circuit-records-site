@@ -27,47 +27,57 @@
       <article class="card shop-card">
         <div class="media"><img src="images/label-side-a.png" alt="Circuit 01 Vinyl" /></div>
         <h2 style="margin-top:18px;font-size:26px;">CIRCUIT 01 — Vinyl</h2>
-        <p class="meta" style="margin-top:10px;">Preorder</p>
+        <p class="meta" style="margin-top:10px;">Preorder*</p>
+        <label class="size-field size-field--muted" for="vinyl-qty">Quantity</label>
+        <input id="vinyl-qty" class="qty-input" data-qty-for="vinyl" type="number" min="1" max="10" value="1" />
         <div class="buy-row">
           <p style="margin:0;font-size:22px;">€15</p>
-          <button class="buy-btn" data-add data-id="vinyl" data-name="CIRCUIT 01 — Vinyl" data-price="15" data-image="images/label-side-a.png">Buy</button>
+          <button class="buy-btn" onclick="requestOrder('CIRCUIT 01 — Vinyl', '', 'vinyl-qty')">Request</button>
         </div>
       </article>
       <article class="card shop-card">
         <div class="media"><img src="images/circuit-tee.jpg" alt="Circuit tee" /></div>
         <h2 style="margin-top:18px;font-size:26px;">Circuit Tee</h2>
         <p class="meta" style="margin-top:10px;">Available</p>
-        <label class="size-field" for="tee-size">Size</label>
+        <label class="size-field size-field--strong" for="tee-size">Select size</label>
         <select id="tee-size" class="size-select" data-size-for="tee">
           <option value="">Select size</option>
           <option value="M">M</option>
           <option value="L">L</option>
           <option value="XL">XL</option>
-          <option value="XXL">XXL</option>
+          <option value="XXL" disabled>XXL — Sold out</option>
         </select>
+        <div class="stock-note" data-stock-note="tee">Available sizes / M, L, XL</div>
+        <label class="size-field size-field--muted" for="tee-qty">Quantity</label>
+        <input id="tee-qty" class="qty-input" data-qty-for="tee" type="number" min="1" max="10" value="1" />
         <div class="buy-row">
           <p style="margin:0;font-size:22px;">€10</p>
-          <button class="buy-btn" data-add data-id="tee" data-name="Circuit Tee" data-price="10" data-image="images/circuit-tee.jpg" data-requires-size="true">Buy</button>
+          <button class="buy-btn" onclick="requestOrder('Circuit Records T-Shirt', 'tee-size', 'tee-qty')">Request</button>
         </div>
       </article>
       <article class="card shop-card">
         <div class="media"><img src="images/bundle.jpg" alt="Circuit bundle" /></div>
         <h2 style="margin-top:18px;font-size:26px;">Circuit Pack — Vinyl / Tee / Key</h2>
-        <p class="meta" style="margin-top:10px;">Available</p>
-        <label class="size-field" for="bundle-size">Tee size</label>
+        <p class="meta" style="margin-top:10px;">Preorder*</p>
+        <p class="product-desc">Bundle includes:<br>– Original Circuit Records T-shirt<br>– CIRCUIT 01 Vinyl<br>– Metal keychain</p>
+        <label class="size-field size-field--strong" for="bundle-size">Tee size</label>
         <select id="bundle-size" class="size-select" data-size-for="bundle">
           <option value="">Select size</option>
           <option value="M">M</option>
           <option value="L">L</option>
-          <option value="XL">XL</option>
-          <option value="XXL">XXL</option>
+          <option value="XL" disabled>XL — Sold out</option>
+          <option value="XXL" disabled>XXL — Sold out</option>
         </select>
+        <div class="stock-note" data-stock-note="bundle">Available sizes / M, L</div>
+        <label class="size-field size-field--muted" for="bundle-qty">Quantity</label>
+        <input id="bundle-qty" class="qty-input" data-qty-for="bundle" type="number" min="1" max="10" value="1" />
         <div class="buy-row">
-          <p style="margin:0;font-size:22px;">€25</p>
-          <button class="buy-btn" data-add data-id="bundle" data-name="Circuit Pack — Vinyl / Tee / Key" data-price="25" data-image="images/bundle.jpg" data-requires-size="true">Buy</button>
+          <p style="margin:0;font-size:22px;">€30</p>
+          <button class="buy-btn" onclick="requestOrder('Circuit Bundle — CIRCUIT 01 Vinyl + T-Shirt + Metal keychain', 'bundle-size', 'bundle-qty')">Request</button>
         </div>
       </article>
     </section>
+    <p class="shop-note">* Available from around 15 April.<br>Orders are handled manually. Payment and shipping details will be confirmed by email. For general inquiries, contact info@circuitrecords.it.</p>
   </main>
   <script src="script.js"></script>
 </body>

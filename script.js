@@ -19,6 +19,11 @@
   const CART_KEY = 'circuit_records_cart';
   const euro = new Intl.NumberFormat('en-EN', { style: 'currency', currency: 'EUR' });
 
+  const stockByProduct = {
+    tee: { M: 8, L: 6, XL: 3, XXL: 0 },
+    bundle: { M: 4, L: 2, XL: 0, XXL: 0 }
+  };
+
   function readCart() {
     try {
       return JSON.parse(localStorage.getItem(CART_KEY) || '[]');
@@ -31,13 +36,41 @@
     localStorage.setItem(CART_KEY, JSON.stringify(items));
   }
 
+  function getSelectedQty(productId) {
+    const qtyInput = document.querySelector(`[data-qty-for="${productId}"]`);
+    const qty = qtyInput ? Number(qtyInput.value) : 1;
+    return Number.isFinite(qty) && qty > 0 ? Math.floor(qty) : 1;
+  }
+
+  function availableStock(productId, size) {
+    if (!stockByProduct[productId]) return Infinity;
+    return stockByProduct[productId][size] ?? 0;
+  }
+
   function addToCart(product) {
     const cart = readCart();
     const existing = cart.find(item => item.id === product.id && item.size === product.size);
-    if (existing) existing.qty += 1;
-    else cart.push({ ...product, qty: 1 });
+    const currentQty = existing ? existing.qty : 0;
+    const maxStock = product.size ? availableStock(product.id, product.size) : Infinity;
+    if (currentQty + product.qty > maxStock) {
+      alert(`Only ${maxStock} available${product.size ? ` in size ${product.size}` : ''}.`);
+      return;
+    }
+    if (existing) existing.qty += product.qty;
+    else cart.push({ ...product });
     saveCart(cart);
     window.location.href = 'cart.html';
+  }
+
+  function markSizeField(select, hasError) {
+    const wrapLabel = select?.closest('.shop-card')?.querySelector(`label[for="${select.id}"]`);
+    if (hasError) {
+      select.classList.add('size-select--error');
+      if (wrapLabel) wrapLabel.classList.add('size-field--error');
+    } else {
+      select.classList.remove('size-select--error');
+      if (wrapLabel) wrapLabel.classList.remove('size-field--error');
+    }
   }
 
   document.querySelectorAll('[data-add]').forEach(btn => {
@@ -45,21 +78,89 @@
       const requiresSize = btn.dataset.requiresSize === 'true';
       const sizeSelect = document.querySelector(`[data-size-for="${btn.dataset.id}"]`);
       const size = sizeSelect ? sizeSelect.value : '';
+      const qty = getSelectedQty(btn.dataset.id);
       if (requiresSize && !size) {
         alert('Select a size first: M, L, XL or XXL.');
-        if (sizeSelect) sizeSelect.focus();
+        if (sizeSelect) {
+          markSizeField(sizeSelect, true);
+          sizeSelect.focus();
+        }
         return;
       }
+      if (sizeSelect) markSizeField(sizeSelect, false);
       addToCart({
         id: btn.dataset.id,
         name: btn.dataset.name,
         price: Number(btn.dataset.price),
         image: btn.dataset.image,
-        size: size || null
+        size: size || null,
+        qty
       });
     });
   });
 
+
+  document.querySelectorAll('[data-size-for]').forEach(select => {
+    select.addEventListener('change', () => markSizeField(select, false));
+  });
+
+  function updateStockNotes() {
+    document.querySelectorAll('[data-stock-note]').forEach(note => {
+      const productId = note.dataset.stockNote;
+      const stock = stockByProduct[productId];
+      if (!stock) return;
+      const available = Object.entries(stock)
+        .filter(([, qty]) => qty > 0)
+        .map(([size, qty]) => `${size} (${qty})`)
+        .join(', ');
+      note.textContent = available ? `Available sizes / ${available}` : 'Sold out';
+    });
+  }
+
+  updateStockNotes();
+
+
+  window.requestOrder = function requestOrder(productName, sizeId = '', qtyId = '') {
+    const to = 'orders@circuitrecords.it';
+    const subject = 'Order Request — Circuit Records';
+
+    let size = '';
+    let quantity = '1';
+
+    if (sizeId) {
+      const sizeEl = document.getElementById(sizeId);
+      if (sizeEl) size = sizeEl.value;
+      if (!size) {
+        alert('Select a size first: M, L, XL or XXL.');
+        if (sizeEl) sizeEl.focus();
+        return;
+      }
+    }
+
+    if (qtyId) {
+      const qtyEl = document.getElementById(qtyId);
+      if (qtyEl) quantity = qtyEl.value;
+    }
+
+    const body = `Hi,
+
+I would like to request the following item:
+
+Product: ${productName}
+Size: ${size || 'N/A'}
+Quantity: ${quantity}
+
+Full name:
+Shipping country:
+City:
+Postal code:
+
+Notes:
+
+Thank you.`;
+
+    window.location.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
   function renderSummary(target) {
     const cart = readCart();
     const subtotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
@@ -110,8 +211,15 @@
     }));
 
     itemsWrap.querySelectorAll('[data-plus]').forEach(btn => btn.addEventListener('click', () => {
-      const cart = readCart().map(item => (item.id === btn.dataset.plus && String(item.size || '') === String(btn.dataset.size || '')) ? { ...item, qty: item.qty + 1 } : item);
-      saveCart(cart); renderCartPage();
+      const cart = readCart();
+      const item = cart.find(entry => entry.id === btn.dataset.plus && String(entry.size || '') === String(btn.dataset.size || ''));
+      const maxStock = item?.size ? availableStock(item.id, item.size) : Infinity;
+      if (item && item.qty + 1 > maxStock) {
+        alert(`Only ${maxStock} available${item.size ? ` in size ${item.size}` : ''}.`);
+        return;
+      }
+      const updated = cart.map(entry => (entry.id === btn.dataset.plus && String(entry.size || '') === String(btn.dataset.size || '')) ? { ...entry, qty: entry.qty + 1 } : entry);
+      saveCart(updated); renderCartPage();
     }));
 
     itemsWrap.querySelectorAll('[data-remove]').forEach(btn => btn.addEventListener('click', () => {
