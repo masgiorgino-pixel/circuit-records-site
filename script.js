@@ -21,9 +21,9 @@
   const euro = new Intl.NumberFormat('en-EN', { style: 'currency', currency: 'EUR' });
 
   const stockByProduct = {
-  tee: { M: 0, L: 10, XL: 10, XXL: 10 },
-  bundle: { M: 4, L: 2, XL: 0, XXL: 0 }
-};
+    tee: { M: 0, L: 10, XL: 10, XXL: 10 },
+    bundle: { M: 4, L: 2, XL: 0, XXL: 0 }
+  };
 
   function readCart() {
     try {
