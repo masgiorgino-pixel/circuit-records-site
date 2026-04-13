@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron:wght@400;700;900&display=swap');
-
 :root {
   --bg: #050505;
   --panel: rgba(255,255,255,0.03);
@@ -420,88 +418,176 @@ body::after {
   .shop-card h2 { font-size: 22px !important; }
 }
 
-.release-main-card {
-  min-height: 640px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
 
-.vinyl-stage {
+.circuit-card {
+  min-height: 760px;
+}
+.circuit-card-title {
+  margin: 0;
+  font-size: clamp(42px, 6vw, 74px);
+  text-transform: uppercase;
+}
+.circuit-card-meta {
+  margin-top: 24px;
+}
+.release-date {
+  margin-top: 10px !important;
+}
+.snippet-player {
+  margin-top: 34px;
   position: relative;
-  margin: 28px auto 4px;
-  width: min(78vw, 420px);
-  aspect-ratio: 1 / 1;
+  z-index: 2;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 22px;
+  padding: 18px 18px 16px;
+  background: rgba(255,255,255,.025);
+  max-width: 420px;
 }
-
+.snippet-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.snippet-kicker {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--soft);
+}
+.snippet-tabs {
+  display: flex;
+  gap: 10px;
+}
+.snippet-tab {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.16);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font: inherit;
+  text-transform: uppercase;
+  transition: .2s ease;
+}
+.snippet-tab:hover,
+.snippet-tab.is-active {
+  border-color: rgba(255,255,255,.55);
+  color: var(--text);
+}
+.snippet-track-title {
+  margin: 14px 0 0;
+  font-size: 14px;
+  color: var(--text);
+  letter-spacing: .04em;
+}
+.snippet-controls {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 14px;
+}
+.snippet-play {
+  min-width: 88px;
+  border: 1px solid rgba(255,255,255,.2);
+  background: transparent;
+  color: var(--text);
+  padding: 11px 14px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 11px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  transition: .2s ease;
+}
+.snippet-play:hover {
+  border-color: rgba(255,255,255,.5);
+}
+.snippet-progress {
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.08);
+  overflow: hidden;
+}
+.snippet-progress-bar {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255,255,255,.95), rgba(255,255,255,.4));
+}
+.snippet-time {
+  font-size: 11px;
+  color: var(--soft);
+  letter-spacing: .08em;
+}
+.vinyl-stage {
+  position: absolute;
+  left: 50%;
+  bottom: 34px;
+  width: min(480px, 92%);
+  aspect-ratio: 1 / 1;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
 .vinyl-disc {
   position: absolute;
   inset: 0;
   border-radius: 50%;
   background:
-    radial-gradient(circle at center, rgba(0,0,0,0) 0 8%, rgba(12,12,12,0.96) 8.5% 100%),
-    repeating-radial-gradient(circle at center,
-      rgba(255,255,255,0.09) 0 1px,
-      rgba(0,0,0,0) 1px 6px
-    );
+    radial-gradient(circle at center, rgba(0,0,0,0) 0 16%, rgba(18,18,18,1) 16.5%, rgba(2,2,2,1) 100%),
+    repeating-radial-gradient(circle at center, rgba(255,255,255,.08) 0 1px, rgba(0,0,0,0) 1px 4px),
+    radial-gradient(circle at 68% 30%, rgba(255,255,255,.18) 0, rgba(255,255,255,0) 18%),
+    radial-gradient(circle at 50% 50%, #0f0f0f 0, #050505 66%, #000 100%);
   box-shadow:
-    0 0 0 1px rgba(255,255,255,0.05),
-    inset 0 0 120px rgba(255,255,255,0.02),
-    inset 0 0 0 22px rgba(0,0,0,0.75),
-    0 20px 80px rgba(0,0,0,0.55);
-}
-.vinyl-disc::before {
-  content: '';
-  position: absolute;
-  inset: 4%;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 24%, rgba(255,255,255,0.18), rgba(255,255,255,0) 28%);
-  mix-blend-mode: screen;
-  opacity: .45;
+    inset 0 0 0 2px rgba(255,255,255,.05),
+    inset 0 0 45px rgba(255,255,255,.03),
+    0 20px 50px rgba(0,0,0,.45);
 }
 .vinyl-disc::after {
   content: '';
   position: absolute;
-  inset: 48.9%;
+  left: 50%;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  transform: translate(-50%, -50%);
   border-radius: 50%;
-  background: rgba(228,228,228,0.8);
-  box-shadow: 0 0 0 6px rgba(0,0,0,0.72);
+  background: #d9d9d9;
+  box-shadow: 0 0 0 5px rgba(0,0,0,.85);
 }
 .vinyl-label {
   position: absolute;
-  width: 31%;
-  height: 31%;
-  top: 50%;
   left: 50%;
+  top: 50%;
+  width: 132px;
+  height: 132px;
   transform: translate(-50%, -50%);
-  border-radius: 50%;
   object-fit: contain;
-  animation: spin 18s linear infinite;
-  opacity: 0.96;
-  filter: drop-shadow(0 0 6px rgba(255,255,255,0.26));
+  animation: vinylSpin 18s linear infinite;
+  opacity: .98;
+  filter: drop-shadow(0 0 8px rgba(255,255,255,.16));
 }
-@keyframes spin {
+@keyframes vinylSpin {
   from { transform: translate(-50%, -50%) rotate(0deg); }
   to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
-.product-desc { margin-top: 10px; font-size: 12px; line-height: 1.6; color: rgba(255,255,255,0.72); }
-.product-card label, .shop-card label, .size-field { display: block; margin-top: 14px; margin-bottom: 6px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.65); }
-.size-field--strong { color: rgba(255,255,255,0.92); }
-.size-field--error { color: #ffb2b2 !important; }
-.size-select, .qty-input { width: 100%; padding: 12px 14px; background: #0a0a0a; color: white; border: 1px solid rgba(255,255,255,0.14); }
-.size-select--error { border-color: #ff7474 !important; box-shadow: 0 0 0 1px rgba(255,116,116,0.4); }
-.stock-note { margin-top: 10px; font-size: 12px; color: rgba(255,255,255,0.58); }
-.shop-note { margin-top: 28px; font-size: 12px; line-height: 1.7; color: rgba(255,255,255,0.6); }
-.contact-grid { display:grid; gap:24px; grid-template-columns: repeat(2, minmax(0,1fr)); }
-.contact-note { font-size: 12px; line-height: 1.7; color: rgba(255,255,255,0.6); margin: 0; }
-
 @media (max-width: 900px) {
-  .artist-layout, .contact-grid, .cart-layout, .checkout-layout { grid-template-columns: 1fr; }
-  .artist-photo { min-height: 420px; }
-  .release-main-card { min-height: 520px; }
-  .vinyl-stage { width: min(88vw, 360px); margin-top: 18px; }
-  .grid-2, .grid-3 { grid-template-columns: 1fr; }
-  .shop-card .media { min-height: 180px; }
-  .release-list-media { min-height: 160px; max-height: 190px; }
+  .circuit-card {
+    min-height: 700px;
+  }
+  .snippet-player {
+    max-width: none;
+    margin-top: 28px;
+  }
+  .vinyl-stage {
+    width: min(380px, 96%);
+    bottom: 26px;
+  }
+  .vinyl-label {
+    width: 112px;
+    height: 112px;
+  }
 }

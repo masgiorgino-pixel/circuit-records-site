@@ -24,20 +24,46 @@
   <main class="page">
     <a class="text-link smallcaps" href="releases.html">← Back</a>
     <section class="release-layout" style="margin-top:18px;">
-      <div class="card release-main-card">
-        <div class="relative-z">
-          <h1 style="margin:0;font-size:clamp(42px,6vw,74px);text-transform:uppercase;">CIRCUIT 01</h1>
-          <div class="meta" style="margin-top:24px;">
-            <p>12&quot; Vinyl / 45 RPM / Italy</p>
-            <p>2026</p>
-            <p style="margin-top:10px;">15 April 2026</p>
-          </div>
-        </div>
-        <div class="vinyl-stage" aria-hidden="true">
-          <div class="vinyl-disc"></div>
-          <img class="vinyl-label" src="images/label.png" alt="" />
+      
+<div class="card circuit-card">
+  <div class="relative-z">
+    <h1 class="circuit-card-title">CIRCUIT 01</h1>
+    <div class="meta circuit-card-meta">
+      <p>12&quot; Vinyl / 45 RPM / Italy</p>
+      <p>2026</p>
+      <p class="release-date">15 April 2026</p>
+    </div>
+
+    <div class="snippet-player" data-player>
+      <div class="snippet-head">
+        <p class="snippet-kicker">Preview</p>
+        <div class="snippet-tabs">
+          <button type="button" class="snippet-tab is-active" data-track="a" data-title="Side A — Megalodon" data-src="audio/megalodon-preview.mp3">A</button>
+          <button type="button" class="snippet-tab" data-track="b" data-title="Side B — Psoriasi" data-src="audio/psoriasi-preview.mp3">B</button>
         </div>
       </div>
+
+      <p class="snippet-track-title" data-track-title>Side A — Megalodon</p>
+
+      <div class="snippet-controls">
+        <button type="button" class="snippet-play" data-play>Play</button>
+        <div class="snippet-progress">
+          <div class="snippet-progress-bar" data-progress></div>
+        </div>
+        <span class="snippet-time" data-time>0:00</span>
+      </div>
+
+      <audio data-audio preload="none">
+        <source src="audio/megalodon-preview.mp3" type="audio/mpeg" />
+      </audio>
+    </div>
+
+    <div class="vinyl-stage" aria-hidden="true">
+      <div class="vinyl-disc"></div>
+      <img class="vinyl-label" src="images/label.png" alt="" />
+    </div>
+  </div>
+</div>
 
       <div class="stack">
         <article class="card">

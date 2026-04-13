@@ -239,3 +239,70 @@ Thank you.`;
   if (checkoutSummary) renderSummary(checkoutSummary);
   renderCartPage();
 })();
+
+
+document.querySelectorAll('[data-player]').forEach(player => {
+  const audio = player.querySelector('[data-audio]');
+  const playBtn = player.querySelector('[data-play]');
+  const progress = player.querySelector('[data-progress]');
+  const time = player.querySelector('[data-time]');
+  const title = player.querySelector('[data-track-title]');
+  const tabs = player.querySelectorAll('[data-track]');
+
+  function formatTime(value) {
+    if (!Number.isFinite(value)) return '0:00';
+    const mins = Math.floor(value / 60);
+    const secs = Math.floor(value % 60).toString().padStart(2, '0');
+    return `${mins}:${secs}`;
+  }
+
+  function setActiveTab(tab) {
+    tabs.forEach(item => item.classList.toggle('is-active', item === tab));
+    const src = tab.dataset.src;
+    const label = tab.dataset.title || '';
+    if (title) title.textContent = label;
+    const source = audio.querySelector('source');
+    if (source) {
+      source.src = src;
+      audio.load();
+      playBtn.textContent = 'Play';
+      progress.style.width = '0%';
+      time.textContent = '0:00';
+    }
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => setActiveTab(tab));
+  });
+
+  playBtn?.addEventListener('click', () => {
+    if (!audio) return;
+    if (audio.paused) {
+      audio.play().catch(() => {
+        alert('Add the preview files in /audio to activate the custom player.');
+      });
+    } else {
+      audio.pause();
+    }
+  });
+
+  audio?.addEventListener('play', () => {
+    if (playBtn) playBtn.textContent = 'Pause';
+  });
+
+  audio?.addEventListener('pause', () => {
+    if (playBtn) playBtn.textContent = 'Play';
+  });
+
+  audio?.addEventListener('timeupdate', () => {
+    const pct = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
+    if (progress) progress.style.width = `${pct}%`;
+    if (time) time.textContent = formatTime(audio.currentTime);
+  });
+
+  audio?.addEventListener('ended', () => {
+    if (playBtn) playBtn.textContent = 'Play';
+  });
+
+  if (tabs[0]) setActiveTab(tabs[0]);
+});
