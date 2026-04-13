@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
 :root {
   --bg: #050505;
   --panel: rgba(255,255,255,0.03);
@@ -731,4 +733,67 @@ body {
 .snippet-play {
   font-family: 'Orbitron', sans-serif;
   letter-spacing: 0.2em;
+}
+
+
+/* RAVE MODE UPGRADE */
+body {
+  background: radial-gradient(circle at 50% 20%, #050505 0%, #000 60%);
+}
+
+.circuit-card-title {
+  text-shadow:
+    0 0 8px rgba(255,255,255,0.4),
+    0 0 20px rgba(255,255,255,0.2);
+}
+
+.snippet-player {
+  backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.03);
+}
+
+.snippet-tab.is-active {
+  box-shadow: 0 0 10px rgba(255,255,255,0.4);
+}
+
+.snippet-progress-bar {
+  background: linear-gradient(90deg, #fff, rgba(255,255,255,0.2));
+}
+
+.vinyl-label {
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.35));
+}
+
+.vinyl-disc {
+  box-shadow:
+    inset 0 0 0 2px rgba(255,255,255,.05),
+    inset 0 0 60px rgba(255,255,255,.04),
+    0 30px 80px rgba(0,0,0,.7);
+}
+
+
+/* CYBER / GLITCH FONT */
+body {
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.circuit-card-title {
+  font-family: 'Share Tech Mono', monospace;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.meta p {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+}
+
+.snippet-track-title {
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.snippet-play {
+  font-family: 'Share Tech Mono', monospace;
 }
