@@ -644,3 +644,127 @@ body {
   font-weight: 600;
   letter-spacing: 0.18em;
 }
+
+
+/* Layout revision: preview higher, label lower */
+.circuit-card {
+  min-height: 860px !important;
+}
+.circuit-card-inner {
+  position: relative;
+  min-height: 812px;
+}
+.circuit-copy-top {
+  position: relative;
+  z-index: 6;
+}
+.snippet-player--top {
+  margin-top: 26px !important;
+  max-width: 430px;
+  z-index: 7 !important;
+}
+.vinyl-stage--lower {
+  left: 52% !important;
+  bottom: 26px !important;
+  width: min(390px, 84%) !important;
+  z-index: 1 !important;
+}
+.vinyl-disc {
+  opacity: .96;
+}
+.vinyl-label {
+  width: 104px !important;
+  height: 104px !important;
+  left: 50% !important;
+  top: 50% !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  filter: drop-shadow(0 0 6px rgba(255,255,255,.22)) !important;
+}
+
+@media (max-width: 900px) {
+  .circuit-card {
+    min-height: 760px !important;
+  }
+  .circuit-card-inner {
+    min-height: 710px;
+  }
+  .snippet-player--top {
+    margin-top: 22px !important;
+    max-width: none;
+  }
+  .vinyl-stage--lower {
+    left: 50% !important;
+    bottom: 20px !important;
+    width: min(290px, 88%) !important;
+  }
+  .vinyl-label {
+    width: 84px !important;
+    height: 84px !important;
+  }
+}
+
+
+/* TECHNO FONT UPGRADE */
+body {
+  font-family: 'Orbitron', sans-serif;
+}
+
+.circuit-card-title {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.meta p {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.snippet-track-title {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+}
+
+.snippet-play {
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.2em;
+}
+
+
+/* RAVE MODE UPGRADE */
+body {
+  background: radial-gradient(circle at 50% 20%, #050505 0%, #000 60%);
+}
+
+.circuit-card-title {
+  text-shadow:
+    0 0 8px rgba(255,255,255,0.4),
+    0 0 20px rgba(255,255,255,0.2);
+}
+
+.snippet-player {
+  backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.03);
+}
+
+.snippet-tab.is-active {
+  box-shadow: 0 0 10px rgba(255,255,255,0.4);
+}
+
+.snippet-progress-bar {
+  background: linear-gradient(90deg, #fff, rgba(255,255,255,0.2));
+}
+
+.vinyl-label {
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.35));
+}
+
+.vinyl-disc {
+  box-shadow:
+    inset 0 0 0 2px rgba(255,255,255,.05),
+    inset 0 0 60px rgba(255,255,255,.04),
+    0 30px 80px rgba(0,0,0,.7);
+}
