@@ -339,15 +339,16 @@ document.querySelectorAll('[data-player]').forEach(player => {
     `;
 
     const subject = encodeURIComponent(data.subject);
-    const body = encodeURIComponent(data.body);
+    const gmailBody = encodeURIComponent(data.body);
+    const yahooBody = encodeURIComponent(data.body.replace(/\n/g, '\r\n'));
     const to = encodeURIComponent(data.to);
 
     if (gmailLink) {
-      gmailLink.href = `https://mail.google.com/mail/?view=cm&fs=1&to=${to}&su=${subject}&body=${body}`;
+      gmailLink.href = `https://mail.google.com/mail/?view=cm&fs=1&to=${to}&su=${subject}&body=${gmailBody}`;
     }
 
     if (yahooLink) {
-      yahooLink.href = `https://compose.mail.yahoo.com/?to=${to}&subject=${subject}&body=${body}`;
+      yahooLink.href = `https://compose.mail.yahoo.com/?to=${to}&subject=${subject}&body=${yahooBody}`;
     }
 
     if (copyBtn) {
