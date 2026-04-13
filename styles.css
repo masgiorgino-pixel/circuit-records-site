@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron:wght@400;700;900&display=swap');
+
 :root {
   --bg: #050505;
   --panel: rgba(255,255,255,0.03);
@@ -416,4 +418,90 @@ body::after {
   .artist-photo { min-height: 86vw; }
   .release-list-media { min-height: 118px; max-height: 138px; }
   .shop-card h2 { font-size: 22px !important; }
+}
+
+.release-main-card {
+  min-height: 640px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.vinyl-stage {
+  position: relative;
+  margin: 28px auto 4px;
+  width: min(78vw, 420px);
+  aspect-ratio: 1 / 1;
+}
+
+.vinyl-disc {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at center, rgba(0,0,0,0) 0 8%, rgba(12,12,12,0.96) 8.5% 100%),
+    repeating-radial-gradient(circle at center,
+      rgba(255,255,255,0.09) 0 1px,
+      rgba(0,0,0,0) 1px 6px
+    );
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.05),
+    inset 0 0 120px rgba(255,255,255,0.02),
+    inset 0 0 0 22px rgba(0,0,0,0.75),
+    0 20px 80px rgba(0,0,0,0.55);
+}
+.vinyl-disc::before {
+  content: '';
+  position: absolute;
+  inset: 4%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 24%, rgba(255,255,255,0.18), rgba(255,255,255,0) 28%);
+  mix-blend-mode: screen;
+  opacity: .45;
+}
+.vinyl-disc::after {
+  content: '';
+  position: absolute;
+  inset: 48.9%;
+  border-radius: 50%;
+  background: rgba(228,228,228,0.8);
+  box-shadow: 0 0 0 6px rgba(0,0,0,0.72);
+}
+.vinyl-label {
+  position: absolute;
+  width: 31%;
+  height: 31%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  object-fit: contain;
+  animation: spin 18s linear infinite;
+  opacity: 0.96;
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.26));
+}
+@keyframes spin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.product-desc { margin-top: 10px; font-size: 12px; line-height: 1.6; color: rgba(255,255,255,0.72); }
+.product-card label, .shop-card label, .size-field { display: block; margin-top: 14px; margin-bottom: 6px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.65); }
+.size-field--strong { color: rgba(255,255,255,0.92); }
+.size-field--error { color: #ffb2b2 !important; }
+.size-select, .qty-input { width: 100%; padding: 12px 14px; background: #0a0a0a; color: white; border: 1px solid rgba(255,255,255,0.14); }
+.size-select--error { border-color: #ff7474 !important; box-shadow: 0 0 0 1px rgba(255,116,116,0.4); }
+.stock-note { margin-top: 10px; font-size: 12px; color: rgba(255,255,255,0.58); }
+.shop-note { margin-top: 28px; font-size: 12px; line-height: 1.7; color: rgba(255,255,255,0.6); }
+.contact-grid { display:grid; gap:24px; grid-template-columns: repeat(2, minmax(0,1fr)); }
+.contact-note { font-size: 12px; line-height: 1.7; color: rgba(255,255,255,0.6); margin: 0; }
+
+@media (max-width: 900px) {
+  .artist-layout, .contact-grid, .cart-layout, .checkout-layout { grid-template-columns: 1fr; }
+  .artist-photo { min-height: 420px; }
+  .release-main-card { min-height: 520px; }
+  .vinyl-stage { width: min(88vw, 360px); margin-top: 18px; }
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .shop-card .media { min-height: 180px; }
+  .release-list-media { min-height: 160px; max-height: 190px; }
 }
