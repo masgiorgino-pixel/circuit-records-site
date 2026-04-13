@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Checkout — Circuit Records</title>
+  <title>SBUME — Circuit Records</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -22,28 +22,29 @@
   </header>
 
   <main class="page">
-    <h1 class="page-title" style="font-size:clamp(44px,7vw,76px);">Checkout</h1>
-    <section class="checkout-layout">
+    <a class="text-link smallcaps" href="artists.html">← Back</a>
+    <section class="artist-layout" style="margin-top:18px;">
+      <div class="card artist-photo-card"><div class="media artist-photo"><img src="images/sbume-live.jpg" alt="Sbume live" /></div></div>
       <article class="card">
-        <p class="smallcaps">Customer details</p>
-        <form class="form-grid" style="margin-top:18px;">
-          <label>Full name<input type="text" placeholder="Name / Surname" /></label>
-          <label>Email<input type="email" placeholder="mail@example.com" /></label>
-          <label>Address<input type="text" placeholder="Street / Number" /></label>
-          <label>City<input type="text" placeholder="City" /></label>
-          <label>Postal code<input type="text" placeholder="ZIP" /></label>
-          <label>Country<select><option>Italy</option><option>France</option><option>Germany</option><option>Spain</option><option>Other</option></select></label>
-          <label>Notes<textarea placeholder="Shipping note / special request"></textarea></label>
-        </form>
-      </article>
-      <aside class="card">
-        <p class="smallcaps">Payment</p>
-        <p class="notice" style="margin-top:18px;">
-          This is a visual checkout page. To accept real payments you will need to connect Stripe, PayPal or another checkout provider.
+        <h1 style="margin:0;font-size:clamp(40px,6vw,72px);text-transform:uppercase;">SBUME</h1>
+        <p class="copy" style="max-width:none;">
+          Sbume operates within the underground rave scene since the late '90s. Founder of Circuit Gang (est. 2008),
+          now evolved into Circuit Records. Direct involvement in free parties, sound systems and uncontrolled environments.
         </p>
-        <div id="checkout-summary" style="margin-top:24px;"></div>
-        <button class="btn btn-primary" style="margin-top:28px;width:100%;">Payment setup needed</button>
-      </aside>
+        <p class="copy" style="max-width:none;">
+          Started experimenting with synths in the late '90s, moving through rave systems and underground contexts,
+          sharing consoles with key artists of the scene. The sound is mainly tekno and tribe, with strong excursions
+          into drum &amp; bass.
+        </p>
+        <div style="border-top:1px solid var(--border);margin-top:28px;padding-top:22px;">
+          <p class="smallcaps">Links / Contact</p>
+          <div class="link-list" style="display:grid;gap:12px;margin-top:14px;">
+            <a href="https://soundcloud.com/sbume" target="_blank" rel="noreferrer">SoundCloud</a>
+            <a href="https://instagram.com/sbume_official" target="_blank" rel="noreferrer">Instagram / sbume_official</a>
+            <a href="https://facebook.com/circuitgang" target="_blank" rel="noreferrer">Facebook / circuitgang</a>
+          </div>
+        </div>
+      </article>
     </section>
   </main>
   <script src="script.js"></script>

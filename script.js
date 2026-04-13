@@ -9,6 +9,7 @@
     'shop.html': 'shop',
     'cart.html': 'shop',
     'checkout.html': 'shop',
+    'request.html': 'shop',
     'links.html': 'links'
   };
   const active = map[path] || 'home';
@@ -20,9 +21,9 @@
   const euro = new Intl.NumberFormat('en-EN', { style: 'currency', currency: 'EUR' });
 
   const stockByProduct = {
-    tee: { M: 8, L: 6, XL: 3, XXL: 0 },
-    bundle: { M: 4, L: 2, XL: 0, XXL: 0 }
-  };
+  tee: { M: 0, L: 10, XL: 10, XXL: 10 },
+  bundle: { M: 4, L: 2, XL: 0, XXL: 0 }
+};
 
   function readCart() {
     try {
@@ -120,7 +121,7 @@
   updateStockNotes();
 
 
-  window.requestOrder = function requestOrder(productName, sizeId = '', qtyId = '') {
+    window.requestOrder = function requestOrder(productName, sizeId = '', qtyId = '') {
     const to = 'orders@circuitrecords.it';
     const subject = 'Order Request — Circuit Records';
 
@@ -131,7 +132,7 @@
       const sizeEl = document.getElementById(sizeId);
       if (sizeEl) size = sizeEl.value;
       if (!size) {
-        alert('Select a size first: M, L, XL or XXL.');
+        alert('Select a size first.');
         if (sizeEl) {
           markSizeField(sizeEl, true);
           sizeEl.focus();
@@ -164,7 +165,16 @@ Notes:
 
 Thank you.`;
 
-    window.location.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    sessionStorage.setItem('circuit_request', JSON.stringify({
+      to,
+      subject,
+      body,
+      productName,
+      size: size || 'N/A',
+      quantity
+    }));
+
+    window.location.href = 'request.html';
   };
   function renderSummary(target) {
     const cart = readCart();
@@ -306,3 +316,49 @@ document.querySelectorAll('[data-player]').forEach(player => {
 
   if (tabs[0]) setActiveTab(tabs[0]);
 });
+
+
+(function () {
+  const requestSummary = document.getElementById('request-summary');
+  if (!requestSummary) return;
+
+  const raw = sessionStorage.getItem('circuit_request');
+  if (!raw) return;
+
+  try {
+    const data = JSON.parse(raw);
+    const gmailLink = document.getElementById('gmail-link');
+    const yahooLink = document.getElementById('yahoo-link');
+    const copyBtn = document.getElementById('copy-request');
+
+    requestSummary.innerHTML = `
+      <p><strong>Product</strong><br>${data.productName}</p>
+      <p><strong>Size</strong><br>${data.size}</p>
+      <p><strong>Quantity</strong><br>${data.quantity}</p>
+      <p><strong>Email</strong><br>${data.to}</p>
+    `;
+
+    const subject = encodeURIComponent(data.subject);
+    const body = encodeURIComponent(data.body);
+    const to = encodeURIComponent(data.to);
+
+    if (gmailLink) {
+      gmailLink.href = `https://mail.google.com/mail/?view=cm&fs=1&to=${to}&su=${subject}&body=${body}`;
+    }
+
+    if (yahooLink) {
+      yahooLink.href = `https://compose.mail.yahoo.com/?to=${to}&subject=${subject}&body=${body}`;
+    }
+
+    if (copyBtn) {
+      copyBtn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(data.body);
+          copyBtn.textContent = 'Copied';
+        } catch (e) {
+          copyBtn.textContent = 'Copy failed';
+        }
+      });
+    }
+  } catch (e) {}
+})();

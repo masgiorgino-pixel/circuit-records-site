@@ -41,13 +41,13 @@
         <p class="meta" style="margin-top:10px;">Available</p>
         <label class="size-field size-field--strong" for="tee-size">Select size</label>
         <select id="tee-size" class="size-select" data-size-for="tee">
-          <option value="">Select size</option>
-          <option value="M">M</option>
-          <option value="L">L</option>
-          <option value="XL">XL</option>
-          <option value="XXL">XXL</option>
-        </select>
-        <div class="stock-note" data-stock-note="tee">Available sizes / M, L, XL, XXL</div>
+  <option value="">Select size</option>
+  <option value="M" disabled>M (Sold Out)</option>
+  <option value="L">L</option>
+  <option value="XL">XL</option>
+  <option value="XXL">XXL</option>
+</select>
+        <div class="stock-note" data-stock-note="tee">Available sizes / M - sold out / L - 10 / XL - 10 / XXL - 10</div>
         <label class="size-field size-field--muted" for="tee-qty">Quantity</label>
         <input id="tee-qty" class="qty-input" data-qty-for="tee" type="number" min="1" max="10" value="1" />
         <div class="buy-row">
@@ -57,18 +57,18 @@
       </article>
       <article class="card shop-card">
         <div class="media"><img src="images/bundle.jpg" alt="Circuit bundle" /></div>
-        <h2 style="margin-top:18px;font-size:26px;">Circuit 01 Pack — Vinyl / Tee / Keyring</h2>
+        <h2 style="margin-top:18px;font-size:26px;">Circuit Pack — Vinyl / Tee / Key</h2>
         <p class="meta" style="margin-top:10px;">Preorder*</p>
-        <p class="product-desc">Bundle includes:<br>– Original Circuit Records T-shirt<br>– CIRCUIT 01 Vinyl<br>– Metal keychain</p>
+        <p class="product-desc">Bundle includes:<br>– Original Circuit Records T-shirt<br>– CIRCUIT 01 Vinyl<br>– Metal keychain (included)</p>
         <label class="size-field size-field--strong" for="bundle-size">Tee size</label>
         <select id="bundle-size" class="size-select" data-size-for="bundle">
           <option value="">Select size</option>
-          <option value="M">M</option>
+          <option value="M" disabled>M (Sold Out)</option>
           <option value="L">L</option>
-          <option value="XL">XL</option>
-          <option value="XXL">XXL</option>
+          <option value="XL" disabled>XL — Sold out</option>
+          <option value="XXL" disabled>XXL — Sold out</option>
         </select>
-        <div class="stock-note" data-stock-note="bundle">Available sizes / M, L, XL, XXL</div>
+        <div class="stock-note" data-stock-note="bundle">Available sizes / M, L</div>
         <label class="size-field size-field--muted" for="bundle-qty">Quantity</label>
         <input id="bundle-qty" class="qty-input" data-qty-for="bundle" type="number" min="1" max="10" value="1" />
         <div class="buy-row">

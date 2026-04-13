@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Request Order — Circuit Records</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <img class="bg-logo" src="images/grammofono-bg.png" alt="" />
+  <header class="header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">Circuit Records</a>
+      <nav class="nav">
+        <a data-nav="home" href="index.html">Home</a>
+        <a data-nav="releases" href="releases.html">Releases</a>
+        <a data-nav="artists" href="artists.html">Artists</a>
+        <a data-nav="shop" href="shop.html">Shop</a>
+        <a data-nav="links" href="links.html">Links</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <a class="text-link smallcaps" href="shop.html">← Back</a>
+    <section class="request-layout">
+      <article class="card">
+        <h1 class="page-title request-title">Request Order</h1>
+        <p class="copy request-copy">
+          Choose how you want to send your order request. This avoids opening the wrong default mail app.
+        </p>
+
+        <div class="request-summary" id="request-summary">
+          <p class="meta">No request data found.</p>
+        </div>
+
+        <div class="request-actions">
+          <a class="btn btn-primary" id="gmail-link" href="#" target="_blank" rel="noreferrer">Open in Gmail</a>
+          <a class="btn" id="yahoo-link" href="#" target="_blank" rel="noreferrer">Open in Yahoo</a>
+          <button class="btn" type="button" id="copy-request">Copy Request</button>
+        </div>
+
+        <p class="shop-note" style="margin-top:24px;">
+          Orders are handled manually. Payment and shipping details will be confirmed by email.
+        </p>
+      </article>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

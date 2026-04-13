@@ -797,3 +797,52 @@ body {
 .snippet-play {
   font-family: 'Share Tech Mono', monospace;
 }
+
+
+/* Lower vinyl position in CIRCUIT 01 card */
+.vinyl-stage--lower {
+  bottom: -10px !important;
+}
+
+@media (max-width: 900px) {
+  .vinyl-stage--lower {
+    bottom: -8px !important;
+  }
+}
+
+
+.request-layout {
+  margin-top: 24px;
+}
+.request-title {
+  font-size: clamp(34px, 6vw, 68px);
+}
+.request-copy {
+  max-width: 680px;
+}
+.request-summary {
+  display: grid;
+  gap: 14px;
+  margin-top: 24px;
+  padding: 20px;
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,.1);
+  background: rgba(255,255,255,.025);
+}
+.request-summary p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.request-summary strong {
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-size: 11px;
+}
+.request-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 24px;
+}
