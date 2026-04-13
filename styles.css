@@ -600,3 +600,47 @@ body::after {
   cursor: not-allowed;
   pointer-events: none;
 }
+
+
+/* FIX overlap stronger */
+.vinyl-stage {
+  left: 65% !important;
+  bottom: -120px !important;
+  width: min(420px, 85%) !important;
+  z-index: 1 !important;
+}
+
+.snippet-player {
+  z-index: 5 !important;
+}
+
+/* FIX label square (force circle clipping) */
+.vinyl-label {
+  border-radius: 50% !important;
+  background: transparent;
+}
+
+/* BETTER TYPOGRAPHY */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+}
+
+.circuit-card-title {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.meta p {
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.snippet-track-title {
+  font-weight: 600;
+}
+
+.snippet-play {
+  font-weight: 600;
+  letter-spacing: 0.18em;
+}
