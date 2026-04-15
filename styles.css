@@ -945,3 +945,44 @@ body {
     min-height: 675px !important;
   }
 }
+
+
+.request-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 18px;
+}
+.request-grid div {
+  display: grid;
+  gap: 6px;
+  padding: 14px 16px;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 16px;
+  background: rgba(255,255,255,.02);
+}
+.request-grid strong {
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  font-size: 10px;
+}
+.request-grid span {
+  color: var(--muted);
+  line-height: 1.5;
+}
+.request-template-title {
+  margin: 0 0 12px 0;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  font-size: 10px;
+}
+#copy-request {
+  min-width: 220px;
+}
+@media (max-width: 900px) {
+  .request-grid {
+    grid-template-columns: 1fr;
+  }
+}

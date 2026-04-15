@@ -331,11 +331,16 @@ document.querySelectorAll('[data-player]').forEach(player => {
     const copyBtn = document.getElementById('copy-request');
 
     requestSummary.innerHTML = `
-      <p><strong>Product</strong><br>${data.productName}</p>
-      <p><strong>Size</strong><br>${data.size}</p>
-      <p><strong>Quantity</strong><br>${data.quantity}</p>
-      <p><strong>Email</strong><br>orders@circuitrecords.it</p>
-      <div class="request-template-block"><pre>${data.body}</pre></div>
+      <div class="request-grid">
+        <div><strong>Product</strong><span>${data.productName}</span></div>
+        <div><strong>Size</strong><span>${data.size}</span></div>
+        <div><strong>Quantity</strong><span>${data.quantity}</span></div>
+        <div><strong>Email</strong><span>orders@circuitrecords.it</span></div>
+      </div>
+      <div class="request-template-block">
+        <p class="request-template-title">Email template</p>
+        <pre>${data.body}</pre>
+      </div>
     `;
 
     if (copyBtn) {
