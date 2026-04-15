@@ -318,6 +318,7 @@ document.querySelectorAll('[data-player]').forEach(player => {
 });
 
 
+
 (function () {
   const requestSummary = document.getElementById('request-summary');
   if (!requestSummary) return;
@@ -327,29 +328,15 @@ document.querySelectorAll('[data-player]').forEach(player => {
 
   try {
     const data = JSON.parse(raw);
-    const gmailLink = document.getElementById('gmail-link');
-    const yahooLink = document.getElementById('yahoo-link');
     const copyBtn = document.getElementById('copy-request');
 
     requestSummary.innerHTML = `
       <p><strong>Product</strong><br>${data.productName}</p>
       <p><strong>Size</strong><br>${data.size}</p>
       <p><strong>Quantity</strong><br>${data.quantity}</p>
-      <p><strong>Email</strong><br>${data.to}</p>
+      <p><strong>Email</strong><br>orders@circuitrecords.it</p>
+      <div class="request-template-block"><pre>${data.body}</pre></div>
     `;
-
-    const subject = encodeURIComponent(data.subject);
-    const gmailBody = encodeURIComponent(data.body);
-    const yahooBody = encodeURIComponent(data.body.replace(/\n/g, '\r\n'));
-    const to = encodeURIComponent(data.to);
-
-    if (gmailLink) {
-      gmailLink.href = `https://mail.google.com/mail/?view=cm&fs=1&to=${to}&su=${subject}&body=${gmailBody}`;
-    }
-
-    if (yahooLink) {
-      yahooLink.href = `https://compose.mail.yahoo.com/?to=${to}&subject=${subject}&body=${yahooBody}`;
-    }
 
     if (copyBtn) {
       copyBtn.addEventListener('click', async () => {
