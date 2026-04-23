@@ -986,3 +986,12 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+
+.hero-tagline {
+  margin-top: 12px;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+}
