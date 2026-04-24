@@ -10,7 +10,8 @@
     'cart.html': 'shop',
     'checkout.html': 'shop',
     'request.html': 'shop',
-    'links.html': 'links'
+    'links.html': 'links',
+    'events.html': 'events'
   };
   const active = map[path] || 'home';
   document.querySelectorAll('.nav a').forEach(a => {
@@ -121,11 +122,12 @@
   updateStockNotes();
 
 
-    window.requestOrder = function requestOrder(productName, sizeId = '', qtyId = '') {
+    window.requestOrder = function requestOrder(productName, sizeId = '', qtyId = '', colorId = '') {
     const to = 'orders@circuitrecords.it';
     const subject = 'Order Request — Circuit Records';
 
     let size = '';
+    let color = '';
     let quantity = '1';
 
     if (sizeId) {
@@ -142,6 +144,20 @@
       if (sizeEl) markSizeField(sizeEl, false);
     }
 
+    if (colorId) {
+      const colorEl = document.getElementById(colorId);
+      if (colorEl) color = colorEl.value;
+      if (!color) {
+        alert('Select a color first.');
+        if (colorEl) {
+          markSizeField(colorEl, true);
+          colorEl.focus();
+        }
+        return;
+      }
+      if (colorEl) markSizeField(colorEl, false);
+    }
+
     if (qtyId) {
       const qtyEl = document.getElementById(qtyId);
       if (qtyEl) quantity = qtyEl.value;
@@ -153,9 +169,11 @@ I would like to request the following item:
 
 Product: ${productName}
 Size: ${size || 'N/A'}
+Color: ${color || 'N/A'}
 Quantity: ${quantity}
 
 Full name:
+Email:
 Shipping address:
 City:
 Postal code:
@@ -171,6 +189,7 @@ Thank you.`;
       body,
       productName,
       size: size || 'N/A',
+      color: color || 'N/A',
       quantity
     }));
 
@@ -334,6 +353,7 @@ document.querySelectorAll('[data-player]').forEach(player => {
       <div class="request-grid">
         <div><strong>Product</strong><span>${data.productName}</span></div>
         <div><strong>Size</strong><span>${data.size}</span></div>
+        <div><strong>Color</strong><span>${data.color || \'N/A\'}</span></div>
         <div><strong>Quantity</strong><span>${data.quantity}</span></div>
         <div><strong>Email</strong><span>orders@circuitrecords.it</span></div>
       </div>

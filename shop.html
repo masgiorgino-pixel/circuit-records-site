@@ -17,8 +17,8 @@
         <a data-nav="artists" href="artists.html">Artists</a>
         <a data-nav="shop" href="shop.html">Shop</a>
         <a data-nav="links" href="links.html">Links</a>
-      <a href="events.html">Events</a>
-    </nav>
+        <a data-nav="events" href="events.html">Events</a>
+      </nav>
     </div>
   </header>
 
@@ -49,11 +49,18 @@
           <option value="XXL">XXL</option>
         </select>
         <div class="stock-note" data-stock-note="tee">Available sizes / M - sold out / L - 10 / XL - 10 / XXL - 10</div>
+
+        <label class="size-field size-field--strong" for="tee-color">Select color</label>
+        <select id="tee-color" class="size-select" data-color-for="tee">
+          <option value="">Select color</option>
+          <option value="Black">Black</option>
+          <option value="Green">Green</option>
+        </select>
         <label class="size-field size-field--muted" for="tee-qty">Quantity</label>
         <input id="tee-qty" class="qty-input" data-qty-for="tee" type="number" min="1" max="10" value="1" />
         <div class="buy-row">
           <p style="margin:0;font-size:22px;">€15</p>
-          <button class="buy-btn" onclick="requestOrder('Circuit Records T-Shirt', 'tee-size', 'tee-qty')">Request</button>
+          <button class="buy-btn" onclick="requestOrder('Circuit Records T-Shirt', 'tee-size', 'tee-qty', 'tee-color')">Request</button>
         </div>
       </article>
       <article class="card shop-card">
@@ -70,11 +77,18 @@
           <option value="XXL" disabled>XXL — Sold out</option>
         </select>
         <div class="stock-note" data-stock-note="bundle">Available sizes / M, L</div>
+
+        <label class="size-field size-field--strong" for="bundle-color">Tee color</label>
+        <select id="bundle-color" class="size-select" data-color-for="bundle">
+          <option value="">Select color</option>
+          <option value="Black">Black</option>
+          <option value="Green">Green</option>
+        </select>
         <label class="size-field size-field--muted" for="bundle-qty">Quantity</label>
         <input id="bundle-qty" class="qty-input" data-qty-for="bundle" type="number" min="1" max="10" value="1" />
         <div class="buy-row">
           <p style="margin:0;font-size:22px;">€30</p>
-          <button class="buy-btn" onclick="requestOrder('Circuit Bundle — CIRCUIT 01 Vinyl + T-Shirt + Metal keychain', 'bundle-size', 'bundle-qty')">Request</button>
+          <button class="buy-btn" onclick="requestOrder('Circuit Bundle — CIRCUIT 01 Vinyl + T-Shirt + Metal keychain', 'bundle-size', 'bundle-qty', 'bundle-color')">Request</button>
         </div>
       </article>
     </section>

@@ -1,37 +1,43 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Events — Circuit Records</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <img class="bg-logo" src="images/grammofono-bg.png" alt="" />
   <header class="header">
-    <div class="logo">Circuit Records</div>
-    <nav class="nav">
-      <a href="index.html">Home</a>
-      <a href="releases.html">Releases</a>
-      <a href="artists.html">Artists</a>
-      <a href="shop.html">Shop</a>
-      <a href="links.html">Links</a>
-      <a href="events.html" class="active">Events</a>
-    </nav>
+    <div class="header-inner">
+      <a class="brand" href="index.html">Circuit Records</a>
+      <nav class="nav">
+        <a data-nav="home" href="index.html">Home</a>
+        <a data-nav="releases" href="releases.html">Releases</a>
+        <a data-nav="artists" href="artists.html">Artists</a>
+        <a data-nav="shop" href="shop.html">Shop</a>
+        <a data-nav="links" href="links.html">Links</a>
+        <a data-nav="events" href="events.html">Events</a>
+      </nav>
+    </div>
   </header>
 
-  <main class="container">
-    <h1 class="page-title">Events</h1>
+  <main class="page">
+    <h1 class="page-title" style="font-size:clamp(44px,7vw,76px);">Events</h1>
 
-    <article class="card contact-card">
-      <h2>Next Events</h2>
-      <div class="events-list">
-        <div class="event-item">
-          <strong>Coming soon</strong>
-          <p>More events will be announced shortly.</p>
+    <section class="events-page-grid" style="margin-top:32px;">
+      <article class="card contact-card">
+        <h2>Next Events</h2>
+        <div class="events-list">
+          <div class="event-item">
+            <strong>Coming soon</strong>
+            <p>More events will be announced shortly.</p>
+          </div>
         </div>
-      </div>
-    </article>
-
+      </article>
+    </section>
   </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
