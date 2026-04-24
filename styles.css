@@ -1072,28 +1072,31 @@ body {
 }
 
 
-.events-list {
-  display: grid;
-  gap: 16px;
-  margin-top: 20px;
-}
-
-.event-item {
-  padding: 14px 16px;
-  border: 1px solid rgba(255,255,255,.08);
-  border-radius: 16px;
+.releases-hero-banner {
+  margin-top: 32px;
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.10);
   background: rgba(255,255,255,.02);
+  height: clamp(230px, 33vw, 430px);
 }
 
-.event-item strong {
+.releases-hero-banner img {
+  width: 100%;
+  height: 100%;
   display: block;
-  text-transform: uppercase;
-  letter-spacing: .14em;
-  font-size: 12px;
+  object-fit: cover;
+  object-position: center center;
+  filter: contrast(1.04) saturate(.95) brightness(.82);
 }
 
-.event-item p {
-  margin-top: 8px;
-  color: var(--muted);
-  font-size: 13px;
+.releases-hero-banner + .card {
+  margin-top: 32px !important;
+}
+
+@media (max-width: 900px) {
+  .releases-hero-banner {
+    height: 220px;
+    border-radius: 22px;
+  }
 }
