@@ -32,7 +32,7 @@
         <label class="size-field size-field--muted" for="vinyl-qty">Quantity</label>
         <input id="vinyl-qty" class="qty-input" data-qty-for="vinyl" type="number" min="1" max="10" value="1" />
         <div class="buy-row">
-          <p style="margin:0;font-size:22px;">€13</p>
+          <p style="margin:0;font-size:22px;">€15</p>
           <button class="buy-btn" onclick="requestOrder('CIRCUIT 01 — Vinyl', '', 'vinyl-qty')">Request</button>
         </div>
       </article>
@@ -43,12 +43,11 @@
         <label class="size-field size-field--strong" for="tee-size">Select size</label>
         <select id="tee-size" class="size-select" data-size-for="tee">
           <option value="">Select size</option>
-          <option value="M" disabled>M (Sold Out)</option>
+          <option value="M">M</option>
           <option value="L">L</option>
           <option value="XL">XL</option>
           <option value="XXL">XXL</option>
         </select>
-        <div class="stock-note" data-stock-note="tee">Available sizes / M - sold out / L - 10 / XL - 10 / XXL - 10</div>
 
         <label class="size-field size-field--strong" for="tee-color">Select color</label>
         <select id="tee-color" class="size-select" data-color-for="tee">
@@ -71,12 +70,11 @@
         <label class="size-field size-field--strong" for="bundle-size">Tee size</label>
         <select id="bundle-size" class="size-select" data-size-for="bundle">
           <option value="">Select size</option>
-          <option value="M" disabled>M (Sold Out)</option>
+          <option value="M">M</option>
           <option value="L">L</option>
-          <option value="XL" disabled>XL — Sold out</option>
-          <option value="XXL" disabled>XXL — Sold out</option>
+          <option value="XL">XL</option>
+          <option value="XXL">XXL</option>
         </select>
-        <div class="stock-note" data-stock-note="bundle">Available sizes / M, L</div>
 
         <label class="size-field size-field--strong" for="bundle-color">Tee color</label>
         <select id="bundle-color" class="size-select" data-color-for="bundle">

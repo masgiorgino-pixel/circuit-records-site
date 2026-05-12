@@ -1139,3 +1139,81 @@ body {
   color: var(--muted);
   font-size: 13px;
 }
+
+
+
+
+
+
+
+
+
+
+
+.network-item img[src*="noize-kiosk-logo"] {
+  width: 72px !important;
+  height: 72px !important;
+  min-width: 72px;
+  object-fit: cover;
+  border-radius: 8px;
+  justify-self: center;
+}
+
+
+.network-links {
+  display: flex;
+  gap: 18px;
+  margin-top: 10px;
+  align-items: center;
+}
+
+.network-links a {
+  color: var(--soft);
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-family: inherit;
+}
+
+.network-links a:hover {
+  color: var(--text);
+}
+
+
+.network-links a,
+.network-links a:visited,
+.network-links a:active {
+  color: var(--soft) !important;
+}
+
+.network-links a:hover {
+  color: var(--text) !important;
+}
+
+
+/* FINAL FIX: Noize Kiosk mini links must match Network meta text */
+.network-links {
+  display: flex !important;
+  gap: 18px !important;
+  margin-top: 10px !important;
+  align-items: center !important;
+}
+
+.network-links a.network-mini-link,
+.network-links a.network-mini-link:link,
+.network-links a.network-mini-link:visited,
+.network-links a.network-mini-link:active {
+  color: var(--soft) !important;
+  font-size: 11px !important;
+  letter-spacing: .12em !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+  font-family: inherit !important;
+  line-height: 1.4 !important;
+}
+
+.network-links a.network-mini-link:hover {
+  color: var(--text) !important;
+  text-decoration: none !important;
+}
