@@ -11,7 +11,8 @@
     'checkout.html': 'shop',
     'request.html': 'shop',
     'links.html': 'links',
-    'events.html': 'events'
+    'events.html': 'events',
+    'news.html': 'news'
   };
   const active = map[path] || 'home';
   document.querySelectorAll('.nav a').forEach(a => {
