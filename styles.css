@@ -1237,3 +1237,19 @@ body {
 .news-links a:hover{border-color:rgba(255,255,255,.5)}
 @media(max-width:900px){.home-manifesto{padding-top:34px;gap:28px}.home-video-card{border-radius:22px;aspect-ratio:4/5}.news-card{grid-template-columns:1fr}.news-gallery{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.news-gallery{grid-template-columns:1fr}}
+
+
+.news-flyer img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,.08);
+  filter: contrast(1.02) brightness(.92);
+}
+
+.artist-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

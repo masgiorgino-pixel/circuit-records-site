@@ -11,7 +11,6 @@
     'checkout.html': 'shop',
     'request.html': 'shop',
     'links.html': 'links',
-    'events.html': 'events',
     'news.html': 'news'
   };
   const active = map[path] || 'home';
