@@ -1253,3 +1253,32 @@ body {
   height: 100%;
   object-fit: cover;
 }
+
+.release-art-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin-top: 32px;
+}
+
+.release-art-item {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  overflow: visible;
+}
+
+.release-art-item img {
+  width: 100%;
+  display: block;
+  object-fit: contain;
+  border-radius: 0;
+  background: transparent;
+}
+
+@media (max-width: 768px) {
+  .release-art-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
