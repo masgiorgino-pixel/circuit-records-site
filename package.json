@@ -1,0 +1,23 @@
+{
+  "name": "circuit-records-site",
+  "version": "1.0.0",
+  "description": "Circuit Records - Independent micro-label based in Milan",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"No tests configured\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/masgiorgino-pixel/circuit-records-site.git"
+  },
+  "keywords": ["circuit-records", "music", "label", "milan"],
+  "author": "Circuit Records",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/masgiorgino-pixel/circuit-records-site/issues"
+  },
+  "homepage": "https://github.com/masgiorgino-pixel/circuit-records-site#readme",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
