@@ -1,97 +1,547 @@
 <!doctype html>
+
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Shop — Circuit Records</title>
+
   <link rel="stylesheet" href="styles.css" />
+
 </head>
+
 <body>
+
   <img class="bg-logo" src="images/grammofono-bg.png" alt="" />
+
   <header class="header">
+
     <div class="header-inner">
+
       <a class="brand" href="index.html">Circuit Records</a>
+
       <nav class="nav">
+
         <a data-nav="home" href="index.html">Home</a>
+
         <a data-nav="releases" href="releases.html">Releases</a>
+
         <a data-nav="artists" href="artists.html">Artists</a>
+
         <a data-nav="shop" href="shop.html">Shop</a>
+
         <a data-nav="links" href="links.html">Links</a>
+
         <a data-nav="news" href="news.html">News & Events</a>
+
       </nav>
+
     </div>
+
   </header>
 
+
   <main class="page">
-    <h1 class="page-title" style="font-size:clamp(44px,7vw,76px);">Shop</h1>
-    <section class="grid-3" style="margin-top:32px;">
+
+    <h1
+      class="page-title"
+      style="font-size:clamp(44px,7vw,76px);"
+    >
+      Shop
+    </h1>
+
+
+    <section
+      class="grid-3"
+      style="margin-top:32px;"
+    >
+
+
+      <!-- CIRCUIT 01 VINYL -->
+
       <article class="card shop-card">
-        <div class="media"><img src="images/shop-vinyl-real.jpeg" alt="Circuit 01 Vinyl" /></div>
-        <h2 style="margin-top:18px;font-size:26px;">CIRCUIT 01 — Vinyl</h2>
-        <p class="meta" style="margin-top:10px;">In Stock</p>
-        <label class="size-field size-field--muted" for="vinyl-qty">Quantity</label>
-        <input id="vinyl-qty" class="qty-input" data-qty-for="vinyl" type="number" min="1" max="10" value="1" />
-        <div class="buy-row">
-          <p style="margin:0;font-size:22px;">€14</p>
-          <button class="buy-btn" onclick="requestOrder('CIRCUIT 01 — Vinyl', '', 'vinyl-qty')">Request</button>
+
+        <div class="media">
+
+          <img
+            src="images/shop-vinyl-real.jpeg"
+            alt="Circuit 01 Vinyl"
+          />
+
         </div>
+
+        <h2
+          style="margin-top:18px;font-size:26px;"
+        >
+          CIRCUIT 01 — Vinyl
+        </h2>
+
+        <p
+          class="meta"
+          style="margin-top:10px;"
+        >
+          In Stock
+        </p>
+
+        <label
+          class="size-field size-field--muted"
+          for="vinyl-qty"
+        >
+          Quantity
+        </label>
+
+        <input
+          id="vinyl-qty"
+          class="qty-input"
+          data-qty-for="vinyl"
+          type="number"
+          min="1"
+          max="10"
+          value="1"
+        />
+
+        <div class="buy-row">
+
+          <p
+            style="margin:0;font-size:22px;"
+          >
+            €14
+          </p>
+
+          <button
+            class="buy-btn"
+            onclick="requestOrder('CIRCUIT 01 — Vinyl', '', 'vinyl-qty')"
+          >
+            Request
+          </button>
+
+        </div>
+
       </article>
+
+
+
+      <!-- CIRCUIT TEE -->
+
       <article class="card shop-card">
-        <div class="media"><img src="images/shop-tee-new.png" alt="Circuit tee" /></div>
-        <h2 style="margin-top:18px;font-size:26px;">Circuit Tee</h2>
-        <p class="meta" style="margin-top:10px;">Available</p>
-        <label class="size-field size-field--strong" for="tee-size">Select size</label>
-        <select id="tee-size" class="size-select" data-size-for="tee">
-          <option value="">Select size</option>
+
+        <div class="media">
+
+          <img
+            src="images/shop-tee-new.png"
+            alt="Circuit Records T-Shirt"
+          />
+
+        </div>
+
+        <h2
+          style="margin-top:18px;font-size:26px;"
+        >
+          Circuit Tee
+        </h2>
+
+        <p
+          class="meta"
+          style="margin-top:10px;"
+        >
+          Available
+        </p>
+
+
+        <label
+          class="size-field size-field--strong"
+          for="tee-size"
+        >
+          Select size
+        </label>
+
+        <select
+          id="tee-size"
+          class="size-select"
+          data-size-for="tee"
+        >
+
+          <option value="">
+            Select size
+          </option>
+
           <option value="M">M</option>
+
           <option value="L">L</option>
+
           <option value="XL">XL</option>
+
           <option value="XXL">XXL</option>
+
         </select>
 
-        <label class="size-field size-field--strong" for="tee-color">Select color</label>
-        <select id="tee-color" class="size-select" data-color-for="tee">
-          <option value="">Select color</option>
-          <option value="Black">Black</option>
-          <option value="Green">Green</option>
-        </select>
-        <label class="size-field size-field--muted" for="tee-qty">Quantity</label>
-        <input id="tee-qty" class="qty-input" data-qty-for="tee" type="number" min="1" max="10" value="1" />
-        <div class="buy-row">
-          <p style="margin:0;font-size:22px;">€15</p>
-          <button class="buy-btn" onclick="requestOrder('Circuit Records T-Shirt', 'tee-size', 'tee-qty', 'tee-color')">Request</button>
-        </div>
-      </article>
-      <article class="card shop-card">
-        <div class="media"><img src="images/shop-bundle-new.png" alt="Circuit bundle" /></div>
-        <h2 style="margin-top:18px;font-size:26px;">Circuit Pack — Vinyl / Tee / Key</h2>
-        <p class="meta" style="margin-top:10px;">In Stock</p>
-        <p class="product-desc">Bundle includes:<br>– Original Circuit Records T-shirt<br>– CIRCUIT 01 Vinyl<br>– Metal keychain (included)</p>
-        <label class="size-field size-field--strong" for="bundle-size">Tee size</label>
-        <select id="bundle-size" class="size-select" data-size-for="bundle">
-          <option value="">Select size</option>
-          <option value="M">M</option>
-          <option value="L">L</option>
-          <option value="XL">XL</option>
-          <option value="XXL">XXL</option>
+
+        <label
+          class="size-field size-field--strong"
+          for="tee-color"
+        >
+          Select color
+        </label>
+
+        <select
+          id="tee-color"
+          class="size-select"
+          data-color-for="tee"
+        >
+
+          <option value="">
+            Select color
+          </option>
+
+          <option value="Black">
+            Black
+          </option>
+
+          <option value="Green">
+            Green
+          </option>
+
         </select>
 
-        <label class="size-field size-field--strong" for="bundle-color">Tee color</label>
-        <select id="bundle-color" class="size-select" data-color-for="bundle">
-          <option value="">Select color</option>
-          <option value="Black">Black</option>
-          <option value="Green">Green</option>
-        </select>
-        <label class="size-field size-field--muted" for="bundle-qty">Quantity</label>
-        <input id="bundle-qty" class="qty-input" data-qty-for="bundle" type="number" min="1" max="10" value="1" />
+
+        <label
+          class="size-field size-field--muted"
+          for="tee-qty"
+        >
+          Quantity
+        </label>
+
+        <input
+          id="tee-qty"
+          class="qty-input"
+          data-qty-for="tee"
+          type="number"
+          min="1"
+          max="10"
+          value="1"
+        />
+
+
         <div class="buy-row">
-          <p style="margin:0;font-size:22px;">€30</p>
-          <button class="buy-btn" onclick="requestOrder('Circuit Bundle — CIRCUIT 01 Vinyl + T-Shirt + Metal keychain', 'bundle-size', 'bundle-qty', 'bundle-color')">Request</button>
+
+          <p
+            style="margin:0;font-size:22px;"
+          >
+            €15
+          </p>
+
+          <button
+            class="buy-btn"
+            onclick="requestOrder('Circuit Records T-Shirt', 'tee-size', 'tee-qty', 'tee-color')"
+          >
+            Request
+          </button>
+
         </div>
+
       </article>
+
+
+
+      <!-- CIRCUIT PACK -->
+
+      <article class="card shop-card">
+
+        <div class="media">
+
+          <img
+            src="images/shop-bundle-new.png"
+            alt="Circuit Records Bundle"
+          />
+
+        </div>
+
+        <h2
+          style="margin-top:18px;font-size:26px;"
+        >
+          Circuit Pack — Vinyl / Tee / Key
+        </h2>
+
+        <p
+          class="meta"
+          style="margin-top:10px;"
+        >
+          In Stock
+        </p>
+
+        <p class="product-desc">
+
+          Bundle includes:<br>
+
+          – Original Circuit Records T-shirt<br>
+
+          – CIRCUIT 01 Vinyl<br>
+
+          – Metal keychain (included)
+
+        </p>
+
+
+        <label
+          class="size-field size-field--strong"
+          for="bundle-size"
+        >
+          Tee size
+        </label>
+
+        <select
+          id="bundle-size"
+          class="size-select"
+          data-size-for="bundle"
+        >
+
+          <option value="">
+            Select size
+          </option>
+
+          <option value="M">M</option>
+
+          <option value="L">L</option>
+
+          <option value="XL">XL</option>
+
+          <option value="XXL">XXL</option>
+
+        </select>
+
+
+        <label
+          class="size-field size-field--strong"
+          for="bundle-color"
+        >
+          Tee color
+        </label>
+
+        <select
+          id="bundle-color"
+          class="size-select"
+          data-color-for="bundle"
+        >
+
+          <option value="">
+            Select color
+          </option>
+
+          <option value="Black">
+            Black
+          </option>
+
+          <option value="Green">
+            Green
+          </option>
+
+        </select>
+
+
+        <label
+          class="size-field size-field--muted"
+          for="bundle-qty"
+        >
+          Quantity
+        </label>
+
+        <input
+          id="bundle-qty"
+          class="qty-input"
+          data-qty-for="bundle"
+          type="number"
+          min="1"
+          max="10"
+          value="1"
+        />
+
+
+        <div class="buy-row">
+
+          <p
+            style="margin:0;font-size:22px;"
+          >
+            €30
+          </p>
+
+          <button
+            class="buy-btn"
+            onclick="requestOrder('Circuit Bundle — CIRCUIT 01 Vinyl + T-Shirt + Metal keychain', 'bundle-size', 'bundle-qty', 'bundle-color')"
+          >
+            Request
+          </button>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- CIRCUIT RECORDS SLIPMAT -->
+
+      <article class="card shop-card">
+
+        <div class="media">
+
+          <img
+            src="images/shop-slipmat.jpeg"
+            alt="Circuit Records Slipmat"
+          />
+
+        </div>
+
+        <h2
+          style="margin-top:18px;font-size:26px;"
+        >
+          Circuit Records Slipmat
+        </h2>
+
+        <p
+          class="meta"
+          style="margin-top:10px;"
+        >
+          In Stock
+        </p>
+
+        <p class="product-desc">
+
+          Circuit Records logo slipmat for turntables.<br>
+          €12 each / €20 pair.
+
+        </p>
+
+
+        <label
+          class="size-field size-field--muted"
+          for="slipmat-qty"
+        >
+          Quantity
+        </label>
+
+        <input
+          id="slipmat-qty"
+          class="qty-input"
+          data-qty-for="slipmat"
+          type="number"
+          min="1"
+          max="10"
+          value="1"
+        />
+
+
+        <div class="buy-row">
+
+          <p
+            style="margin:0;font-size:22px;"
+          >
+            €12 / €20 pair
+          </p>
+
+          <button
+            class="buy-btn"
+            onclick="requestOrder('Circuit Records Slipmat — €12 each / €20 pair', '', 'slipmat-qty')"
+          >
+            Request
+          </button>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- CIRCUIT RECORDS LOGO KEYCHAIN -->
+
+      <article class="card shop-card">
+
+        <div class="media">
+
+          <img
+            src="images/shop-keychain.jpeg"
+            alt="Circuit Records Logo Keychain"
+          />
+
+        </div>
+
+        <h2
+          style="margin-top:18px;font-size:26px;"
+        >
+          Circuit Records Logo Keychain
+        </h2>
+
+        <p
+          class="meta"
+          style="margin-top:10px;"
+        >
+          In Stock
+        </p>
+
+        <p class="product-desc">
+
+          Small Circuit Records logo keychain.
+
+        </p>
+
+
+        <label
+          class="size-field size-field--muted"
+          for="keychain-qty"
+        >
+          Quantity
+        </label>
+
+        <input
+          id="keychain-qty"
+          class="qty-input"
+          data-qty-for="keychain"
+          type="number"
+          min="1"
+          max="10"
+          value="1"
+        />
+
+
+        <div class="buy-row">
+
+          <p
+            style="margin:0;font-size:22px;"
+          >
+            €4
+          </p>
+
+          <button
+            class="buy-btn"
+            onclick="requestOrder('Circuit Records Logo Keychain', '', 'keychain-qty')"
+          >
+            Request
+          </button>
+
+        </div>
+
+      </article>
+
+
     </section>
-    <p class="shop-note">* In Stock.<br>Orders are handled manually. Payment and shipping details will be confirmed by email. For general inquiries, contact info@circuitrecords.it.</p>
+
+
+    <p class="shop-note">
+
+      * In Stock.<br>
+
+      Orders are handled manually.
+      Payment and shipping details will be confirmed by email.
+      For general inquiries, contact info@circuitrecords.it.
+
+    </p>
+
   </main>
+
+
   <script src="script.js"></script>
+
 </body>
+
 </html>
